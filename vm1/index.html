@@ -3,12 +3,46 @@
   <head>
     <meta charset="utf-8">
     <title>Product App</title>
+    <link rel="stylesheet" type="text/css" href="product-style.css">
   </head>
   <body>
+    <div class="nav-bar"></div>
+    <h1>Cat Socks</h1>
     <div id="app">
-      <h1>Product goes here</h1>
-    </div>
-    <script src="mhttps://cdn.jsdeliver.net/npm/vue"></script>
+      <div class="product">
+        <div class="product-image">
+          <a :href="url" target="_blank rel=noopener"><img :src="image"></a>
+        </div>
+        <div class="product-info">
+          <h1>{{ product }}</h1>
+          <p>{{ description }}</p>
+          <button v-on:click="addToCart">Add to Cart</button><br>
+          <button v-on:click="deleteFromCart">Delete From Cart</button>
+          <div class="cart">
+            <p>Cart({{cart}})</p>
+          </div>
+          <p v-if="inventory > 10">In Stock</p>
+          <p v-else-if="inventory < 10 && inventory > 0">Almost out of Stock</p>
+          <p v-else>Out of Stock</p>
+          <p v-show="onSale">ON SALE NOW! 🛍</p>
+          <hr>
+          <ul>
+            <li v-for="detail in details">{{ detail }}</li> 
+          </ul>
+          <hr>
+          <p><strong>Animals:</strong></p>
+          <div v-for="variant in variants" :key="variant.variantId">
+            <p @mouseover="updateProduct(variant.variantImage)">{{ variant.variantAnimal }}</p>
+          </div>
+          <hr>
+          <h3>Sizes</h3>
+          <ul>
+            <li v-for="size in sizes">{{ size }}</li>
+          </ul>
+        </div>
+      </div>
+    </div> <!-- app -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="main.js"></script>
   </body>
 </html>
