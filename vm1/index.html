@@ -13,30 +13,37 @@
           <a :href="url" target="_blank rel=noopener"><img :src="image"></a>
         </div>
         <div class="product-info">
-          <h1>{{ product }}</h1>
+          <h1>{{ title }}</h1>
           <p>{{ description }}</p>
           <button v-on:click="addToCart"
                       :disabled="!inStock"
-                      :class="{ disabledButton: !inStock }">Add to Cart</button><br>
+                      :class="{ disabledButton: !inStock }">
+                      Add to Cart
+          </button>
+          <br>
           <button v-on:click="deleteFromCart">Delete From Cart</button>
           <div class="cart">
             <p>Cart({{cart}})</p>
           </div>
-          <p v-if="inventory > 10">In Stock</p>
+          <p v-if="inventory > 10"
+            :disabled-stock="!inStock"
+            :class="{ disabledStock: !inStock }">
+              In Stock
+          </p>
           <p v-else-if="inventory < 10 && inventory > 0">Almost out of Stock</p>
-          <p v-else>Out of Stock</p>
-          <p v-show="onSale">ON SALE NOW! 🛍</p>
+          <p v-else >Out of Stock</p>
+          <p v-if="onSale">{{ onSale }}ON SALE NOW! 🛍</p>
           <hr>
           <ul>
             <li v-for="detail in details">{{ detail }}</li> 
           </ul>
           <hr>
           <p><strong>Animals:</strong></p>
-          <div v-for="variant in variants"
+          <div v-for="(variant, index) in variants"
             :key="variant.variantId"
             class="color-box"
             :style="{ backgroundColor: variant.variantColor }" >
-            <p @mouseover="updateProduct(variant.variantImage)">{{ variant.variantAnimal }}</p>
+            <p @mouseover="updateProduct(index)">{{ variant.variantAnimal }}</p>
           </div>
           <hr>
           <h3>Sizes</h3>

@@ -64,6 +64,11 @@ button {
 
 .disabledButton {
   background-color: #d8d8d8;
+  color:#999;
+}
+
+p.disabledStock{
+  text-decoration: line-through;
 }
 
 .review-form {
