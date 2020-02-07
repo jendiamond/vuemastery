@@ -7,23 +7,28 @@ var app = new Vue({
     url: 'https://www.whatonearthcatalog.com/CT8119.html',
     inventory: 100,
     onSale: true,
+    inStock: false,
     details: ["100% polyester", "Machine washable and dryable", "Printed in the USA", "One size fits up to Men's 13", "Buy 2 or More and Save 20%!"],
     variants: [
       { variantId: 'CT8119-tabby',
         variantAnimal: 'Tabby',
-        variantImage: './assets/tabby.jpg'
+        variantImage: './assets/tabby.jpg',
+        variantColor: '#CDB7B5' //mistyrose
       },
       { variantId: 'CT8119-tiger',
         variantAnimal: 'Tiger',
-        variantImage: './assets/tiger.jpg'
+        variantImage: './assets/tiger.jpg',
+        variantColor: '#EE7942' //sienna
       },
-      { variantId: 'CT8119-tabby',
+      { variantId: 'CT8119-yellowtabby',
         variantAnimal: 'Yellow Tabby',
-        variantImage: './assets/yellow_tabby.jpg'
+        variantImage: './assets/yellow_tabby.jpg',
+        variantColor: '#E9C2A6' //light wood
       },
       { variantId: 'CT8119-leopard',
         variantAnimal: "Leopard",
-        variantImage: './assets/leopard.jpg'
+        variantImage: './assets/leopard.jpg',
+        variantColor: '#FCE6C9' //eggshell
       },
     ],
     sizes: ["small","medium","large"],

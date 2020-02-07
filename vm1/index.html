@@ -6,8 +6,7 @@
     <link rel="stylesheet" type="text/css" href="product-style.css">
   </head>
   <body>
-    <div class="nav-bar"></div>
-    <h1>Cat Socks</h1>
+    <div class="nav-bar"><div class="title">Cat Socks</div></div>
     <div id="app">
       <div class="product">
         <div class="product-image">
@@ -16,7 +15,9 @@
         <div class="product-info">
           <h1>{{ product }}</h1>
           <p>{{ description }}</p>
-          <button v-on:click="addToCart">Add to Cart</button><br>
+          <button v-on:click="addToCart"
+                      :disabled="!inStock"
+                      :class="{ disabledButton: !inStock }">Add to Cart</button><br>
           <button v-on:click="deleteFromCart">Delete From Cart</button>
           <div class="cart">
             <p>Cart({{cart}})</p>
@@ -31,7 +32,10 @@
           </ul>
           <hr>
           <p><strong>Animals:</strong></p>
-          <div v-for="variant in variants" :key="variant.variantId">
+          <div v-for="variant in variants"
+            :key="variant.variantId"
+            class="color-box"
+            :style="{ backgroundColor: variant.variantColor }" >
             <p @mouseover="updateProduct(variant.variantImage)">{{ variant.variantAnimal }}</p>
           </div>
           <hr>
